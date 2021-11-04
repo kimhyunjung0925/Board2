@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Board2</string>
+    <string name="write">글쓰기</string>
+
+    <string name="title">제목</string>
+    <string name="writer">작성자</string>
+    <string name="rdt">작성일시</string>
+
+</resources>
