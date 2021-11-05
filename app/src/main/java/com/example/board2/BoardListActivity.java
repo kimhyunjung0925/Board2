@@ -17,12 +17,10 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class BoardListActivity extends AppCompatActivity {
     private RecyclerView rvList;
     private BoardListAdapter adapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +30,16 @@ public class BoardListActivity extends AppCompatActivity {
 
         rvList = findViewById(R.id.rvList);
         rvList.setAdapter(adapter);
-
-        getBoardList();
     }
 
     public void onStart(){
         super.onStart();
         getBoardList();
+    }
+
+    public void clkWrite(View v) {
+        Intent intent= new Intent(this, BoardWriteActivity.class);
+        startActivity(intent);
     }
 
     private void getBoardList() {
@@ -89,7 +90,7 @@ class BoardListAdapter extends RecyclerView.Adapter<BoardListAdapter.MyViewHolde
             @Override
             public void onClick(View view) {
                 Log.i("myLog","iboard : " + vo.getIboard());
-                Intent intent =new Intent(view.getContext(), BoardListActivity.class);
+                Intent intent =new Intent(view.getContext(), BoardDetailActivity.class);
                 intent.putExtra("iboard",vo.getIboard());
                 view.getContext().startActivity(intent);
             }
@@ -108,8 +109,8 @@ class BoardListAdapter extends RecyclerView.Adapter<BoardListAdapter.MyViewHolde
         public MyViewHolder(View v) {
             super(v);
             tvIboard = v.findViewById(R.id.tvIboard);
-            tvTitle = v.findViewById(R.id.tvTitle);
-            tvWriter = v.findViewById(R.id.tvWriter);
+            tvTitle = v.findViewById(R.id.etTitle);
+            tvWriter = v.findViewById(R.id.etWriter);
             tvRdt = v.findViewById(R.id.tvRdt);
         }
 
